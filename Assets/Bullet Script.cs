@@ -8,6 +8,8 @@ public class Bullet : MonoBehaviour
     private Camera mainCam;
     public Rigidbody2D rb;
     public float speed = 20f;
+    private float lifeTime;
+    public int damage = 20;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,8 +22,19 @@ public class Bullet : MonoBehaviour
         float rot = Mathf.Atan2(rotation.x, rotation.y) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, rot + 90);
     }
-    void OnCollisionEnter2D()
+
+    private void Update()
     {
+        lifeTime += Time.deltaTime;
+        if (lifeTime > 5) gameObject.SetActive(false);
+    }
+    void OnTriggerEnter2D (Collider2D hitInfo)
+    {
+        Enemy enemy = hitInfo.GetComponent<Enemy>();
+        if (enemy != null)
+        {
+            enemy.TakeDamage(damage);
+        }
         Destroy(gameObject);
     }
 }
