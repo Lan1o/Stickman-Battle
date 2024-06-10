@@ -69,4 +69,11 @@ public class Movement : MonoBehaviour
         yield return new WaitForSeconds(seconds);
         leftLegRB.AddForce(Vector2.left * (speed * 1000) * Time.deltaTime);
     }
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Death")
+        {
+            Destroy(gameObject);
+        }
+    }
 }

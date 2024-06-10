@@ -12,7 +12,7 @@ public class MovementScript : MonoBehaviour
     public float speed;
     public float jumpForce;
     public float midairSpeed;
-    private bool facingRight = true;
+    //private bool facingRight = true;
 
 
     // Update is called once per frame
@@ -65,4 +65,11 @@ public class MovementScript : MonoBehaviour
 
     //    transform.Rotate(0f, 180f, 0f);
     //}
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Death")
+        {
+            Destroy(gameObject);
+        }
+    }
 }

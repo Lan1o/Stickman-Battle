@@ -23,4 +23,11 @@ public class Enemy : MonoBehaviour
         //Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Death")
+        {
+            Destroy(gameObject);
+        }
+    }
 }

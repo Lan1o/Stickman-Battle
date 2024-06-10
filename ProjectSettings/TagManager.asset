@@ -7,11 +7,12 @@ TagManager:
   - Item
   - Script
   - floor
+  - Death
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Death
   - Water
   - UI
   - 
